@@ -19,6 +19,11 @@ public class CategoriaResource {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id) {
 
+        /*
+        ResponseEntity é um tipo especial do Spring que já encapsula várias informações
+            de uma resposta HTTP para um serviço Rest.
+         */
+
         Categoria obj = service.buscar(id);
 
         return ResponseEntity.ok().body(obj);
