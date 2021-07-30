@@ -4,7 +4,6 @@ import com.cursomc.domain.Categoria;
 import com.cursomc.domain.Produto;
 import com.cursomc.repositories.CategoriaRepository;
 import com.cursomc.repositories.ProdutoRepository;
-import com.sun.org.apache.xalan.internal.xslt.Process;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -34,7 +33,7 @@ public class CursomcApplication implements CommandLineRunner {
 		Produto p2 = new Produto(null , "Impressora", 800.0);
 		Produto p3 = new Produto(null, "Mouse", 80.0);
 
-		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
+		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));   //Adiciona todos os Produtos (p1, p2 e p3) na lista Produtos do obj Categoria
 		cat2.getProdutos().addAll(Arrays.asList(p2));
 
 		p1.getCategorias().addAll(Arrays.asList(cat1));

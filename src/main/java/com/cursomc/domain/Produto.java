@@ -1,5 +1,7 @@
 package com.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,9 +19,10 @@ public class Produto implements Serializable {
     private String nome;
     private Double preco;
 
+    @JsonBackReference
     @ManyToMany
-    @JoinTable(name = "PRODUTO_CATEGORIA",
-        joinColumns = @JoinColumn(name = "produto_id"),
+    @JoinTable(name = "PRODUTO_CATEGORIA",  //Quando há um relacionamento mXm, é necessário uma 3a tabela com o id das duas tabelas
+        joinColumns = @JoinColumn(name = "produto_id"), //Chave estrangeira correspondente ao Produto
         inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
     private List<Categoria> categorias = new ArrayList<>();
@@ -65,6 +68,12 @@ public class Produto implements Serializable {
         this.categorias = categorias;
     }
 
+    /*
+    Hash Code & Equals
+        - Para que dois objetos possam ser comparados pelo seu conteúdo
+            e não pelo seu ponteiro de memória;
+        - Por padrão, a comparação é por Id.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
