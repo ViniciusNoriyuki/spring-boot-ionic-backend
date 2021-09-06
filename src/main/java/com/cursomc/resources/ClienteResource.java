@@ -20,14 +20,14 @@ public class ClienteResource {
     private ClienteService service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> find(@PathVariable Integer id) {
+    public ResponseEntity<Cliente> find(@PathVariable Integer id) {
 
         /*
         ResponseEntity é um tipo especial do Spring que já encapsula várias informações
             de uma resposta HTTP para um serviço Rest.
          */
 
-        Cliente obj = service.buscar(id);
+        Cliente obj = service.find(id);
 
         return ResponseEntity.ok().body(obj);
     }
