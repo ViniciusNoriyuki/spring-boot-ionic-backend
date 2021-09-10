@@ -47,7 +47,7 @@ public class ItemPedido implements Serializable {
         id.setPedido(pedido);
     }
 
-    public Produto getProdudto() {
+    public Produto getProduto() {
         return id.getProduto();
     }
 
@@ -105,7 +105,7 @@ public class ItemPedido implements Serializable {
         NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
         StringBuilder builder = new StringBuilder();
-        builder.append(getProdudto().getNome());
+        builder.append(getProduto().getNome());
         builder.append(", Qte: ");
         builder.append(getQuantidade());
         builder.append(", Preço unitário: ");
