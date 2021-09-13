@@ -2,6 +2,7 @@ package com.cursomc.services;
 
 import com.cursomc.domain.*;
 import com.cursomc.domain.enums.EstadoPagamento;
+import com.cursomc.domain.enums.Perfil;
 import com.cursomc.domain.enums.TipoCliente;
 import com.cursomc.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,13 +90,18 @@ public class DBService {
         est2.getCidades().addAll(Arrays.asList(cid1));
 
         Cliente cli1 = new Cliente(null, "Pedro Henrique", "viniciusnoriyuki10@gmail.com", "1231241928", TipoCliente.PESSOAFISICA, pe.encode("123"));
-
         cli1.getTelefones().addAll(Arrays.asList("1341215", "1251251"));
+
+        Cliente cli2 = new Cliente(null, "Ana Costa", "viniciusnoriyuki100@gmail.com", "90209757060", TipoCliente.PESSOAFISICA, pe.encode("123"));
+        cli2.getTelefones().addAll(Arrays.asList("5915616", "1651651"));
+        cli2.addPerfil(Perfil.ADMIN);
 
         Endereco end1 = new Endereco(null, "Rua 9", "123", null, "Vila Nova", "123124", cli1, cid1);
         Endereco end2 = new Endereco(null, "Avenida Matos", "159", "Sala 10", "Flores", "149554", cli1, cid2);
+        Endereco end3 = new Endereco(null, "Avenida Floriano", "2106", null, "Centro", "143454", cli2, cid2);
 
         cli1.getEnderecos().addAll(Arrays.asList(end1, end2));
+        cli2.getEnderecos().addAll(Arrays.asList(end3));
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
@@ -125,8 +131,8 @@ public class DBService {
         produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11));
         estadoRepository.saveAll(Arrays.asList(est1, est2));
         cidadeRepository.saveAll(Arrays.asList(cid1, cid2, cid3));
-        clienteRepository.saveAll(Arrays.asList(cli1));
-        enderecoRepository.saveAll(Arrays.asList(end1, end2));
+        clienteRepository.saveAll(Arrays.asList(cli1, cli2));
+        enderecoRepository.saveAll(Arrays.asList(end1, end2, end3));
         pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
         pagamentoRepository.saveAll(Arrays.asList(pag1, pag2));
         itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
